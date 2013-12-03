@@ -1,0 +1,5 @@
+ cpu    2.95 sec : particles 
+ cpu       0 sec : fields 
+ cpu    0.01 sec : diagnostic 
+ cpu    2.97 sec : total 
+ sys       4 sec : total

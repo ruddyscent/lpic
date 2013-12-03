@@ -1,0 +1,92 @@
+#!/bin/sh
+
+PIC=..
+DATA=${PIC}/data/
+#DATA=~/local/data/data_harm_matching_alpha30.2/
+POST=${DATA}/Post
+IDL=${PIC}/idl
+
+echo
+
+if [ -r "${POST}" ] 
+then
+    echo directory ${POST} exists
+    if [ -r "${POST}/output.post" ] 
+    then
+	echo directory ${POST} not empty!
+    fi
+else 
+    mkdir ${POST}
+    echo make directory ${POST}
+fi
+
+nice ./postprocessor ${DATA} ${POST}
+
+for i in de di jx jy jz ex ey ez bx by bz edens
+do 
+	if [ -r "${POST}/idl_$i.header" ] 
+	then 
+		rm -f idl_$i.pro
+		cat ${POST}/idl_$i.header  > ${POST}/idl_$i.pro
+		cat ${IDL}/idl.body       >> ${POST}/idl_$i.pro
+		rm -f ${POST}/idl_$i.header
+		echo idl_$i written
+
+		rm -f idl2ps_$i.pro
+		cat ${POST}/idl2ps_$i.header  > ${POST}/idl2ps_$i.pro
+		cat ${IDL}/idl2ps.body       >> ${POST}/idl2ps_$i.pro
+		rm -f ${POST}/idl2ps_$i.header
+		echo idl2ps_$i written
+	fi
+
+	if [ -r "${POST}/idl_kt_$i.header" ] 
+	then 
+		rm -f idl_kt_$i.pro
+		cat ${POST}/idl_kt_$i.header  > ${POST}/idl_kt_$i.pro
+		cat ${IDL}/idl.body          >> ${POST}/idl_kt_$i.pro
+		rm -f ${POST}/idl_kt_$i.header
+		echo idl_kt_$i written
+
+		rm -f idl2ps_kt_$i.pro
+		cat ${POST}/idl2ps_kt_$i.header  > ${POST}/idl2ps_kt_$i.pro
+		cat ${IDL}/idl2ps.body          >> ${POST}/idl2ps_kt_$i.pro
+		rm -f ${POST}/idl2ps_kt_$i.header
+		echo idl2ps_kt_$i written
+	fi
+
+	if [ -r "${POST}/idl_kw_$i.header" ] 
+	then 
+		rm -f idl_kw_$i.pro
+		cat ${POST}/idl_kw_$i.header  > ${POST}/idl_kw_$i.pro
+		cat ${IDL}/idl.body          >> ${POST}/idl_kw_$i.pro
+		rm -f ${POST}/idl_kw_$i.header
+		echo idl_kw_$i written
+
+		rm -f idl2ps_kw_$i.pro
+		cat ${POST}/idl2ps_kw_$i.header  > ${POST}/idl2ps_kw_$i.pro
+		cat ${IDL}/idl2ps.body          >> ${POST}/idl2ps_kw_$i.pro
+		rm -f ${POST}/idl2ps_kw_$i.header
+		echo idl2ps_kw_$i written
+	fi
+
+	if [ -r "${POST}/idlmovie.header" ] 
+	then 
+		rm -f idlmovie.pro
+		cat ${POST}/idlmovie.header  > ${POST}/idlmovie.pro
+		cat ${IDL}/idlmovie.body    >> ${POST}/idlmovie.pro
+		rm -f ${POST}/idlmovie.header
+		echo idlmovie written
+	fi
+done
+
+if [ -r "${POST}/idlmovie.pro" ] 
+then 
+    cp ${IDL}/idlphase.pro ${POST} 
+    echo
+    echo idlphase.pro copied to ${POST}
+fi
+
+echo
+
+
+

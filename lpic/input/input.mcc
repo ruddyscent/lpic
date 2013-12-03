@@ -1,0 +1,277 @@
+//////////////////////////////////////////////////////////////////////////////////////////
+//
+//  input for lpi
+//
+//////////////////////////////////////////////////////////////////////////////////////////
+
+&pulse_front
+------------------------------------------------------------------------------------------
+Q                = 0         # switch ON (Q=1) OFF (Q=0)
+amplitude        = 0.256     # dimensionless laser field amplitude
+amplitude2       = 0.0       # dimensionless laser field amplitude, 2nd harmonic
+amplitude3       = 0.0       # dimensionless laser field amplitude, 3rd harmonic
+phase2           = 0         # 2nd harmonic's phase with respect to fundamental
+phase3           = 0         # 3rd harmonic's phase
+
+angle            = 0         # in degree
+polarization     = 1         # s=1, p=2, c=3
+shape            = 2         # linear=1, sin=2, sin^2=3 
+raise            = 2         # pulse raise/fall time in periods
+duration         = 6         # pulse duration in periods
+pulse_save       = 1         # save pulse shape? yes=1, no=0
+pulse_save_step  = 0.02      # time step in periods
+
+&pulse_rear
+------------------------------------------------------------------------------------------
+Q                = 0         # switch ON (Q=1) OFF (Q=0)
+amplitude        = 0.5       # dimensionless laser field amplitude
+amplitude2       = 0.0       # dimensionless laser field amplitude, 2nd harmonic
+amplitude3       = 0.0       # dimensionless laser field amplitude, 3rd harmonic
+phase2           = 0         # 2nd harmonic's phase with respect to fundamental
+phase3           = 0         # 3rd harmonic's phase
+
+angle            = 0         # in degree
+polarization     = 2         # s=1, p=2, c=3
+shape            = 2         # linear=1, sin=2, sin^2=3 
+raise            = 2         # pulse raise/fall time in periods
+duration         = 6         # pulse duration in periods
+pulse_save       = 1         # save pulse shape? yes=1, no=0
+pulse_save_step  = 0.02      # time step in periods
+
+&propagate
+------------------------------------------------------------------------------------------
+prop_start       = 0         # start time in periods
+prop_stop        = 2         # stop time in periods 
+
+&ionization
+------------------------------------------------------------------------------------------
+ion_alpha       = 1.32      # atom dependent parameters
+ion_u           = 15.39     # ionization potential= ion_u * z^ion_alpha 
+part_z_max      = 8         # maximum ion charge 
+omega_laser     = 1.2       # laser frequency in eV
+Q_ion_current   = 0         # ionization current?
+Q_info          = 0         # additional info in error file
+
+&mcc_package
+------------------------------------------------------------------------------------------
+xsection_data_file = input/neon_xsection_data
+
+&box
+------------------------------------------------------------------------------------------
+cells_per_wl     = 10        # cells per wavelength, lab frame
+cells            = 100       # total number of cells
+cells_left       = 50        # cells vacuum left
+cells_plasma     = 1         # occupied cells for cells_ramp=0
+cells_ramp       = 0         # cells in the linear ramp region
+n_ion_over_nc    = 200       # maximum density/critical density
+box_save         = 1         # save configuration? yes=1, no=0
+
+&electrons
+------------------------------------------------------------------------------------------
+fix         = 0              # 0->not fixed   1->fixed
+ppc         = 10             # max. number of MacroParticles per cell 
+vtherm      = 0.5            # thermal velocity in units of C
+
+&ions
+------------------------------------------------------------------------------------------
+fix         = 0              # 0->not fixed   1->fixed
+z           = 8              # q/e
+#zmax        = +8             # maximum q/e
+m           = 400000         # m/m_e
+ppc         = 10             # max. number of MacroParticles per cell 
+vtherm      = 0.1            # thermal velocity in units of C
+
+&output
+------------------------------------------------------------------------------------------
+path = /tmp/u/rbp/data/data_mcc     # output path
+
+&energy
+       Q         = 0         # energy plot?
+       t_start   = 0         # start time in periods
+       t_stop    = 20        # stop time in periods
+       t_step    = 0         # time step in periods
+
+&flux
+     Q           = 0         # flux plot?
+     t_start     = 0         # start time in periods
+     t_stop      = 20        # stop time in periods
+     t_step      = 0         # time step in periods
+
+&reflex
+       Q         = 0         # reflectivity plot?
+       t_start   = 0         # start time in periods
+       t_stop    = 20        # stop time in periods
+       t_step    = 1         # time step in periods
+
+&snapshot
+         Q       = 0         # snapshots? 
+         t_start = 0         # start time in periods
+         t_stop  = 20        # stop time in periods
+         t_step  = 0.5       # time step in periods
+
+&snapshot_ion
+         Q       = 1         # snapshots? 
+         t_start = 1         # start time in periods
+         t_stop  = 5         # stop time in periods
+         t_step  = 1         # time step in periods
+
+&snapshot_macro
+         Q       = 0         # snapshots? 
+         t_start = 0         # start time in periods
+         t_stop  = 20        # stop time in periods
+         t_step  = 1         # time step in periods
+
+&el_phasespace
+         Q       = 0    # phasespace plots?
+         t_start = 0    # start time in periods
+         t_stop  = 20   # stop time in periods 
+         t_step  = 2    # time step in periods 
+
+&ion_phasespace
+         Q       = 0    # phasespace plots?
+         t_start = 0    # start time in periods
+         t_stop  = 10   # stop time in periods 
+         t_step  = 1    # time step in periods 
+
+&el_velocity
+         Q       = 0      # electron velocity distributions?
+         t_start = 0      # start time in periods
+         t_stop  = 20     # stop time in periods
+         t_step  = 1      # time step in periods
+
+&ion_velocity
+         Q       = 0      # ion velocity distributions?
+         t_start = 0      # start time in periods
+         t_stop  = 10     # stop time in periods
+         t_step  = 5      # time step in periods
+
+&de
+   Q             = 0         # electron density plots?
+   t_start       = 1         # start time in periods
+   t_stop        = 4         # stop time in periods
+   x_start       = 1800      # left boundary in cells
+   x_stop        = 3600      # right boundary in cells
+
+&di
+   Q             = 0         # ion density plots?
+   t_start       = 0         # start time in periods
+   t_stop        = 10        # stop time in periods
+   x_start       = 0         # left boundary in cells
+   x_stop        = 500       # right boundary in cells
+
+&jx
+   Q             = 0         # jx plots?
+   t_start       = 0         # start time in periods
+   t_stop        = 10        # stop time in periods
+   x_start       = 0         # left boundary in cells
+   x_stop        = 500       # right boundary in cells
+
+&jy
+   Q             = 0         # jy plots?
+   t_start       = 0         # start time in periods
+   t_stop        = 10        # stop time in periods
+   x_start       = 0         # left boundary in cells
+   x_stop        = 500       # right boundary in cells
+
+&jz
+   Q             = 0         # jz plots?
+   t_start       = 0         # start time in periods
+   t_stop        = 10        # stop time in periods
+   x_start       = 0         # left boundary in cells
+   x_stop        = 500       # right boundary in cells
+
+&ex
+   Q             = 0         # ex plots?
+   t_start       = 0         # start time in periods
+   t_stop        = 20        # stop time in periods
+   x_start       = 0         # left boundary in cells
+   x_stop        = 500       # right boundary in cells
+
+&ey
+   Q             = 0         # ey plots?
+   t_start       = 0         # start time in periods
+   t_stop        = 10        # stop time in periods
+   x_start       = 0         # left boundary in cells
+   x_stop        = 500       # right boundary in cells
+
+&ez
+   Q             = 0         # ez plots?
+   t_start       = 0         # start time in periods
+   t_stop        = 10        # stop time in periods
+   x_start       = 0         # left boundary in cells
+   x_stop        = 500       # right boundary in cells
+
+&bx
+   Q             = 0         # bx plots?
+   t_start       = 0         # start time in periods
+   t_stop        = 10        # stop time in periods
+   x_start       = 0         # left boundary in cells
+   x_stop        = 500       # right boundary in cells
+
+&by
+   Q             = 0         # by plots?
+   t_start       = 0         # start time in periods
+   t_stop        = 10        # stop time in periods
+   x_start       = 0         # left boundary in cells
+   x_stop        = 500       # right boundary in cells
+
+&bz
+   Q             = 0         # bz plots?
+   t_start       = 0         # start time in periods
+   t_stop        = 10        # stop time in periods
+   x_start       = 0         # left boundary in cells
+   x_stop        = 500       # right boundary in cells
+
+&edens
+   Q             = 0         # field energy density plots?
+   t_start       = 1         # start time in periods
+   t_stop        = 4         # stop time in periods
+   x_start       = 1800      # left boundary in cells
+   x_stop        = 3600      # right boundary in cells
+
+&traces
+      Q          = 0         # traces?
+      t_start    = 0         # start time in periods
+      t_stop     = 100       # stop time in periods
+      traces     = 5         # # of traces at fixed positions x: 
+               t0=2, t1=150, t2=200, t3=250, t4=498
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+&restart
+------------------------------------------------------------------------------------------
+Q         = 0                # restart from intermediate stage?
+file      = restart          # start file
+Q_save    = 0                # save intermediate stages periodically?
+file_save = restart          # save file
+
+
+&parallel
+------------------------------------------------------------------------------------------
+N_domains        = 1         # number of parallel processes
+Q_reo            = 1         # periodic reorganizations?
+delta_reo        = 1         # laser cycles between reo's 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+
+thermal velocity v/c vs. thermal energy [eV]   M ( vx^2 + vy^2 + vz^2 ) = 3 k T
+------------------------------------------------------------------------------------------
+1e-4        0.005
+3e-4        0.046
+5e-4        0.128
+1e-3        0.511
+4e-3        8.2  
+1e-2       51 
+2e-2      204
+3e-2      460
+4e-2      818
+4.42e-2  1000 
+1e-1     5110
+   
+choose:  v_th/c = (lambda_d/dx)  *  (omega_p/omega)       *      (2pi dx/lambda)
+                        :=1        = sqrt(z_ion * n_ion_over_nc)  = 2pi/cells_per_wl
+
+//////////////////////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,19 @@
+fresnel parameters:
+
+plasma
+-----------------------------------
+plasma frequency   : 0.8
+
+laser pulse
+-----------------------------------
+incident amplitude : 0.01
+angle of incidence : 0
+polarization       : 1
+duration           : 60
+
+propagation
+-----------------------------------
+time_start         : 0
+time_stop          : 30
+steps per period   : 50
+

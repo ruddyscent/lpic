@@ -1,0 +1,337 @@
+parameter
+------------------------------------------------------------------
+program name       : lpic
+input file         : input/input.list
+output path        : ../data
+domain number      : 1
+# domains          : 1
+# species          : 2
+# steps per cycle  : 100
+adjusted angle     : 0
+LT-Beta            : 0
+LT-Gamma           : 1
+
+
+box
+------------------------------------------------------------------
+Q_restart          : 0
+restart_file       : restart
+Q_restart_save     : 1
+restart_file_save  : restart
+N_domains          : 1
+Q_reorganize       : 1
+delta_reo          : 1
+nsp                : 2
+
+
+domain: plasma
+------------------------------------------------------------------
+Q_restart          : 0
+restart_file       : restart
+Q_restart_save     : 1
+N_domains          : 1
+cells              : 500
+cells_per_wl       : 100
+cells_left         : 100
+cells_ramp         : 0
+cells_plasma       : 100
+dx                 : 0.01
+
+n_ion_over_nc      : 6
+n_el_over_nc       : 6
+
+
+domain: particles
+------------------------------------------------------------------
+nsp                :        2
+fix                :        0       0
+charge             :       -1       1
+mass               :        1    2000
+ppc                :       50      50
+vtherm             :        0       0
+
+
+domain: Lorentz transformation
+------------------------------------------------------------------
+spp                : 100
+adjusted angle     : 0
+Beta               : 0
+Gamma              : 1
+
+
+pulse # 1
+------------------------------------------------------------------
+Q                  : 1
+a0                 : 0.5
+a2                 : 0
+a3                 : 0
+phase2             : 0
+phase3             : 0
+polarization       : 1
+shape              : 2
+raise              : 2
+duration           : 6
+Q_save             : 1
+save_step          : 0.02
+time_start         : 0
+time_stop          : 1
+Q_restart          : 0
+
+
+pulse # 2
+------------------------------------------------------------------
+Q                  : 0
+a0                 : 0.5
+a2                 : 0
+a3                 : 0
+phase2             : 0
+phase3             : 0
+polarization       : 2
+shape              : 2
+raise              : 2
+duration           : 6
+Q_save             : 1
+save_step          : 0.02
+time_start         : 0
+time_stop          : 1
+Q_restart          : 0
+
+
+diagnostic
+------------------------------------------------------------------
+Q_restart        : 0
+restart_file     : restart
+Q_restart_save   : 1
+restart_file_save: restart
+
+
+diagnostic poisson
+------------------------------------------------------------------
+Q                : 1
+t_start          : 0
+t_stop           : 1
+t_step           : 1
+Q_restart        : 0
+restart_file     : restart
+
+
+diagnostic snapshot
+------------------------------------------------------------------
+Q                : 0
+t_start          : 0
+t_stop           : 10
+t_step           : 1
+Q_restart        : 0
+restart_file     : restart
+
+
+diagnostic el_velocity
+------------------------------------------------------------------
+Q                : 0
+t_start          : 0
+t_stop           : 10
+t_step           : 5
+Q_restart        : 0
+restart_file     : restart
+
+
+diagnostic ion_velocity
+------------------------------------------------------------------
+Q                : 0
+t_start          : 0
+t_stop           : 10
+t_step           : 5
+Q_restart        : 0
+restart_file     : restart
+
+
+diagnostic flux
+------------------------------------------------------------------
+Q                : 1
+t_start          : 0
+t_stop           : 20
+t_step           : 1
+Q_restart        : 0
+restart_file     : restart
+
+
+diagnostic reflex
+------------------------------------------------------------------
+Q                : 1
+t_start          : 0
+t_stop           : 20
+t_step           : 1
+Q_restart        : 0
+restart_file     : restart
+
+
+diagnostic spacetime
+------------------------------------------------------------------
+de:
+   Q             : 0
+   t_start       : 0
+   t_stop        : 10
+   x_start       : 0
+   x_stop        : 500
+di:
+   Q             : 0
+   t_start       : 0
+   t_stop        : 10
+   x_start       : 0
+   x_stop        : 500
+jx:
+   Q             : 0
+   t_start       : 0
+   t_stop        : 10
+   x_start       : 0
+   x_stop        : 500
+jy:
+   Q             : 0
+   t_start       : 0
+   t_stop        : 10
+   x_start       : 0
+   x_stop        : 500
+jz:
+   Q             : 0
+   t_start       : 0
+   t_stop        : 10
+   x_start       : 0
+   x_stop        : 500
+ex:
+   Q             : 0
+   t_start       : 0
+   t_stop        : 10
+   x_start       : 0
+   x_stop        : 500
+ey:
+   Q             : 0
+   t_start       : 0
+   t_stop        : 10
+   x_start       : 0
+   x_stop        : 500
+ez:
+   Q             : 0
+   t_start       : 0
+   t_stop        : 10
+   x_start       : 0
+   x_stop        : 500
+bx:
+   Q             : 0
+   t_start       : 0
+   t_stop        : 10
+   x_start       : 0
+   x_stop        : 500
+by:
+   Q             : 0
+   t_start       : 0
+   t_stop        : 10
+   x_start       : 0
+   x_stop        : 500
+bz:
+   Q             : 0
+   t_start       : 0
+   t_stop        : 10
+   x_start       : 0
+   x_stop        : 500
+edens:
+   Q             : 0
+   t_start       : 0
+   t_stop        : 10
+   x_start       : 0
+   x_stop        : 500
+Q_restart        : 0
+restart_file     : restart
+
+
+diagnostic energy
+------------------------------------------------------------------
+Q                : 1
+t_start          : 0
+t_stop           : 20
+t_step           : 1
+Q_restart        : 0
+restart_file     : restart
+
+
+diagnostic trace
+------------------------------------------------------------------
+Q                : 1
+t_start          : 0
+t_stop           : 100
+t_step           : 1
+traces           : 5
+                 : 2 150 200 250 498 
+Q_restart        : 0
+restart_file     : restart
+
+
+diagnostic el_phasespace
+------------------------------------------------------------------
+Q                : 0
+t_start          : 0
+t_stop           : 20
+t_step           : 2
+Q_restart        : 0
+restart_file     : restart
+
+
+diagnostic ion_phasespace
+------------------------------------------------------------------
+Q                : 0
+t_start          : 0
+t_stop           : 20
+t_step           : 2
+Q_restart        : 0
+restart_file     : restart
+
+
+propagate
+------------------------------------------------------------------
+Q_restart          : 0
+restart_file       : restart
+prop_start         : 0
+prop_stop          : 1
+N_domains          : 1
+
+
+propagate constructor
+------------------------------------------------------------------
+Gamma              : 1
+dx                 : 0.01
+idx                : 100
+dt                 : 0.01
+domain             : 1
+
+
+uhr
+------------------------------------------------------------------
+Q_restart        : 0
+restart_file     : restart
+Q_restart_save   : 1
+restart_file_save: restart
+
+
+uhr
+------------------------------------------------------------------
+Q_restart        : 0
+restart_file     : restart
+Q_restart_save   : 1
+restart_file_save: restart
+
+
+uhr
+------------------------------------------------------------------
+Q_restart        : 0
+restart_file     : restart
+Q_restart_save   : 1
+restart_file_save: restart
+
+
+uhr
+------------------------------------------------------------------
+Q_restart        : 0
+restart_file     : restart
+Q_restart_save   : 1
+restart_file_save: restart
+
+

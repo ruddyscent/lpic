@@ -1,0 +1,7 @@
+#!/bin/sh
+IDL_DIR="/afs/ipp/common/soft/idl"
+IDL_PATH="+$IDL_DIR/lib:+$IDL_DIR/examples"
+PATH=$IDL_DIR/examples/ipp/for_idl:$PATH
+export PATH IDL_DIR IDL_PATH
+
+echo 'ipp_examples' | $IDL_DIR/bin/idl

@@ -1,0 +1,28 @@
+
+		Fresnel reflectivity
+------------------------------------------------------------------------------------------
+
+This program calculates the flux of light I(t) reflected from a 
+step plasma profile.
+The laser pulse is assumed to have rectangular shape.
+
+Input parameters are 
+	- plasma frequency in units of the laser frequency
+	- incident laser amplitude (= lpic++ amplitude a0)
+	- angle of incidence
+	- polarization (s or p)
+	- pulse duration in laser cycles
+	- number of time steps per cycle
+	- output path
+These paramters are entered by editing the input file 'input.fresnel'.
+
+Results are written to file 'reflex', 'reflex-avg' and 'reflex-int'.
+	'reflex' : reflected intensity as a function of time
+	'reflex-avg' : cycle-averaged reflectivity ( <I(t)>/I0 )
+	'reflex-int' : integrand for the numerical integration, 
+                       only for those who are very much interested!                       
+
+Notice: To compare the reflected flux with lpic++ results, you have 
+	to shift the reflected flux in time corresponding to the 
+	time the laser light needs for reaching the surface and 
+	returning to the box boundary.

@@ -1,0 +1,89 @@
+LPIC++ 1.3 SOURCE CODE DISTRIBUTION
+===================================
+
+  LPIC++ is a one-dimensional relativistic electromagnetic
+  Particle-In-Cell (PIC) code for simulating the interaction 
+  of laser light with plasma.
+  You will find the complete documentation in pdf format in 
+  directory 'lpic-*/doc/' after unpacking  LPIC++.
+  LPIC++ is written in C++ and is supposed to run on any 
+  Unix platform like Linux, Solaris, SunOS, AIX, etc. 
+  It has been tested and used extensively under AIX.
+
+
+DEPENDENCIES
+============
+
+  The parallelized version of LPIC++ requires one of the 
+  following packages. If you want to run lpic as a single process
+  only, you can ignore this section.
+
+  - PVM (Parallel Virtual Machine), "a software system that 
+    enables a collection of heterogeneous computers to be used 
+    as a coherent and flexible concurrent computational resource". 
+    Homepage:        http://www.csm.ornl.gov/pvm/pvm_home.html
+    Download source: http://www.netlib.org/pvm3/index.html
+    PVM's source code needs slight modifications in order to
+    compile on Mac OS X. A modified package is available from
+    http://hpc.sourceforge.net
+
+  - LAM/MPI, an open-source implementation of the Message Passing
+    Interface specification (www.mpi-forum.org).
+    Homepage and Source: http://www.lam-mpi.org
+    LAM/MPI is also available as binary Debian, rpm, Fink and 
+    Apple Mac OS X packages. 
+
+  LPIC++ was used from 1994 to 1997 under AIX with pvm3.2.6 and 
+  pvm3.3.11.
+
+
+INSTALL
+=======
+
+  1) Unpack the archive:
+
+     Copy 'lpic-*.tar.gz' to the directory where you would like 
+     to install LPIC++, change to this directory and type
+
+       'gunzip lpic-*.tar.gz'
+       'tar -xvf lpic-*.tar'
+
+     Change to directory 'lpic-*'. 
+     Installation is then done in three GNU steps:
+
+  2) ./configure
+
+     run "./configure --help" for options
+     typical configurations:
+       ./configure                                           
+       ./configure --enable-pvm                         
+       ./configure --enable-pvm \
+                   --with-pvm-include=/usr/local/include \
+                   --with-pvm-lib=/usr/local/lib
+
+  3) make
+
+  4) (sudo) make install-exec
+
+  Installation has been tested so far on 
+  - Mac OS X 10.3 and 10.4
+  - Cygwin
+  - Red Hat Linux 8.0 3.2-7
+
+
+DISTRIBUTION
+============
+
+  Change to the pic directory and type "make dist".
+
+     
+USAGE AND DOCUMENTATION
+=======================
+
+  Read 'mpq225.pdf' in directory lpic-*/doc.
+
+
+FEEDBACK
+========
+
+  Please send any feedback to kemp@physics.unr.edu or pic@lichters.net 

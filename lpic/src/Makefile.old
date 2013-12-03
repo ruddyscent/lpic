@@ -1,0 +1,136 @@
+##########################################################################################
+# 
+# LPIC++ Makefile
+#
+# edit lines 51...71 in order to choose your favourite compiler
+# or rely on the default GNU g++ 
+#
+##########################################################################################
+
+TARGET_PLAIN     = lpic_plain
+TARGET_PARALLEL  = lpic_parallel
+
+SRC_PLAIN        = error.C parameter.C readfile.C box.C domain.C pulse.C \
+                   diagnostic_stepper.C diagnostic_trace.C \
+                   diagnostic_spacetime.C diagnostic_energy.C diagnostic_reflex.C \
+                   diagnostic_flux.C diagnostic_poisson.C diagnostic_phasespace.C \
+                   diagnostic_snapshot.C diagnostic_velocity.C diagnostic.C \
+                   propagate.C propagate_fields.C propagate_particles.C \
+                   stack.C matrix.C uhr.C main.C 
+SRC_PARALLEL     = $(SRC_PLAIN) network.C 
+OBJ_PLAIN        = error.o parameter.o readfile.o box.o domain.o pulse.o \
+                   diagnostic_stepper.o diagnostic_trace.o \
+                   diagnostic_spacetime.o diagnostic_energy.o diagnostic_reflex.o \
+                   diagnostic_flux.o diagnostic_poisson.o diagnostic_phasespace.o \
+                   diagnostic_snapshot.o diagnostic_velocity.o diagnostic.o \
+                   propagate.o propagate_fields.o propagate_particles.o \
+                   stack.o matrix.o uhr.o main.o 
+OBJ_PARALLEL     = $(OBJ_PLAIN) network.o 
+
+LPICPATH         = ..
+SRCPATH          = $(LPICPATH)/src
+OBJPATH          = $(LPICPATH)/obj
+INCPATH          = $(SRCPATH)/include
+HEADERS          = $(INCPATH)/*.h
+
+INCDIRS_PLAIN    = -I$(INCPATH) 
+INCDIRS_PARALLEL = $(INCDIRS_PLAIN) -I$(PVM_ROOT)/include
+INCDIRS          = $(INCDIRS_PARALLEL)
+   
+LIBS_PLAIN       = -lm -lc
+LIBS_PARALLEL    = $(LIBS_PLAIN) -lpvm3 
+
+LIBDIRS_PLAIN    = -L/usr/lib 
+LIBDIRS_PARALLEL = $(LIBDIRS_PLAIN) -L$(PVM_LIBRARY)  
+
+##########################################################################################
+#
+# edit the following lines
+#
+
+# GNU g++ compiler:
+CC        = g++
+LINK      = g++
+CFLAGS    = -O3 -Winline -Wno-deprecated
+
+# AIX xlC compiler:
+#CC        = xlC
+#LINK      = xlC
+#CFLAGS    = -O3 -Q
+#CFLAGS    = -O3 -Q -qarch=pwr2 -qtune=pwr2 -qalign=power
+#CFLAGS    = -O3 -qstrict -Q -qarch=pwr2 -qtune=pwr2 -qalign=power
+#CFLAGS    = -O2 -Q -qarch=pwr2 -qtune=pwr2 -qalign=power
+#CFLAGS    = -O3 -qstrict -Q
+#CFLAGS    = -O2 -Q 
+#CFLAGS    = -O2 -pg
+#CFLAGS    = -O2 -g 
+
+# Cray CC compiler
+#CC     = CC
+#LINK   = CC
+#CFALGS = -O3
+
+##########################################################################################
+ 
+LINKFLAGS_PLAIN = $(LIBDIRS_PLAIN) $(LIBS_PLAIN)
+LINKFLAGS_PARALLEL = $(LIBDIRS_PARALLEL) $(LIBS_PARALLEL)
+
+RM        = rm 
+RMFLAGS   = -f
+EMACSBACK = *~ $(INCPATH)/*.h~
+
+parallel:
+	cp $(INCPATH)/parallel.h $(INCPATH)/parallel_or_plain.h;
+	-mv $(OBJPATH)/parallel/*.o $(SRCPATH);
+	make $(TARGET_PARALLEL); 
+	mv *.o $(OBJPATH)/parallel/;
+	mv $(TARGET_PARALLEL) $(LPICPATH);
+	@ echo "Target" $(TARGET_PARALLEL) "compiled"
+	@ echo "Executable" $(TARGET_PARALLEL) "moved to" $(LPICPATH)
+
+$(TARGET_PARALLEL): $(SRC_PARALLEL) $(OBJ_PARALLEL) 
+	$(LINK) $(CFLAGS) -o $(TARGET_PARALLEL) $(OBJ_PARALLEL) $(LINKFLAGS_PARALLEL)
+
+plain	: 
+	cp $(INCPATH)/plain.h $(INCPATH)/parallel_or_plain.h;
+	-mv $(OBJPATH)/plain/*.o $(SRCPATH);
+	make $(TARGET_PLAIN); 
+	mv *.o $(OBJPATH)/plain/;
+	mv $(TARGET_PLAIN) $(LPICPATH);
+	@ echo "Target" $(TARGET_PLAIN) "compiled"
+	@ echo "Executable" $(TARGET_PLAIN) "moved to" $(LPICPATH)
+
+$(TARGET_PLAIN): $(SRC_PLAIN) $(OBJ_PLAIN) 
+	$(LINK) $(CFLAGS) -o $(TARGET_PLAIN) $(OBJ_PLAIN) $(LINKFLAGS_PLAIN)  
+
+.C.o:	
+	$(CC) $(CFLAGS) $(INCDIRS) -c $<
+
+clean:
+	make clean_plain
+	make clean_parallel
+	make order
+
+clean_parallel:
+	$(RM) $(RMFLAGS) $(OBJPATH)/parallel/*.o;
+
+clean_plain:
+	$(RM) $(RMFLAGS) $(OBJPATH)/plain/*.o;
+
+order:
+	$(RM) $(RMFLAGS) $(EMACSBACK) 
+
+revision:
+	ci -l Makefile *.C $(INCPATH)/*.h
+	chmod 644 Makefile *.C $(INCPATH)/*.h
+
+printout:
+	a2ps -nP Makefile $(HEADERS) $(SRC_PARALLEL)  > printout.ps
+
+wc:
+	wc Makefile $(HEADERS) $(SRC_PARALLEL)
+
+rlog:
+	rlog RCS/* $(INCPATH)/RCS/* > rlog.txt
+
+

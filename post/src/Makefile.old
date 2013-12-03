@@ -1,0 +1,72 @@
+TARGET    = postprocessor
+
+SRC       = main.C error.C parameter.C readfile.C ft.C ft2d.C \
+            spacetime.C trace.C phasespace.C utilities.C
+OBJ       = main.o error.o parameter.o readfile.o ft.o ft2d.o \
+            spacetime.o trace.o phasespace.o utilities.o
+
+POST      = ..
+SRCPATH   = $(POST)/src
+OBJPATH   = $(POST)/obj
+INCPATH   = $(SRCPATH)/include
+HEADERS   = $(INCPATH)/*.h
+
+INCDIRS   = -I$(INCPATH) 
+
+LIBS      = -lm -lc
+# -lqt
+
+LIBDIRS   = -L/usr/lib 
+# -L$(QT_LIBRARY)
+
+# ----------------------------------- edit -----------------------------------------------
+
+# RS6000 AIX
+#CC        = xlC
+#LINK      = xlC
+#CFLAGS    = -O2
+
+# GNU C compiler
+CC        = g++
+LINK      = g++
+CFLAGS    = -O2 -Wno-deprecated
+
+# ----------------------------------------------------------------------------------------
+
+LINKFLAGS = $(LIBDIRS) $(LIBS)
+
+RM        = rm 
+RMFLAGS   = -f
+EMACSBACK = *~ $(INCPATH)/*.h~
+
+post:
+	-mv $(OBJPATH)/*.o $(SRCPATH);
+	make $(TARGET);
+	mv *.o $(OBJPATH)/;
+	mv $(TARGET) $(POST);
+
+$(TARGET): $(SRC) $(OBJ) 
+	$(LINK) $(CFLAGS) -o $(TARGET) $(OBJ) $(LINKFLAGS)
+
+.C.o:	
+	$(CC) $(CFLAGS) $(INCDIRS) -c $<
+
+clean:
+	$(RM) $(RMFLAGS) $(OBJPATH)/*.o
+
+order:
+	$(RM) $(RMFLAGS) $(EMACSBACK) 
+
+revision:
+	ci -l Makefile *.C $(INCPATH)/*.h
+	chmod 644 Makefile *.C $(INCPATH)/*.h
+
+printout:
+	a2ps -c -nP Makefile $(HEADERS) $(SOURCES_PARALLEL)  > printout.ps
+
+wc:
+	wc Makefile $(HEADERS) $(SOURCES_PARALLEL)
+
+rlog:
+	rlog RCS/* $(INCPATH)/RCS/* > rlog.txt
+

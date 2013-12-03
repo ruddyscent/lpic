@@ -1,0 +1,23 @@
+2002-04-01 Andreas Kemp
+
+	Inconsistencies in trace.C, phasespace.C and spacetime.C eliminated 
+	(not substantial) 
+
+ 	An exponential energy distribution function has been introduced in 
+	domain.C
+
+	Modification in include/matrix.h: include <iomanip.h> to compile with
+	g++ (GCC) 3.2 20020903 (Red Hat Linux 8.0 3.2-7) and in 
+	fresnel/include/parameter.h (double time_start instead of int)
+
+2005-08-06 Roland Lichters
+
+	Another slight modification to utilities.C: the header iostream.h 
+	(needed for cout and endl) is included now in order to enable 
+	compiling with gcc 4 on Mac OS X 10.4 
+
+2005-08-24 Roland Lichters
+
+	lpic wrapped into gnu automake
+
+

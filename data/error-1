@@ -1,0 +1,162 @@
+parameter::Constructor                    DB:1     
+parameter::Constructor                          DEBUG is defined   
+parameter::Constructor                          PARALLEL is undefined   
+parameter::Constructor                          program            = lpic  
+parameter::Constructor                          domain number      = 1  
+parameter::Constructor                          # domains          = 1  
+parameter::Constructor                          # species          = 2  
+parameter::adjust_angle                   DB:2     
+parameter::adjust_angle                         angles adjusted to  0 degree 
+parameter::adjust_angle                         # spl             = 100  
+parameter::adjust_angle                         # spp             = 100  
+parameter::save                           DB:3     
+main                                      DB:4     
+input_box::Constructor                    DB:5     
+input_box::Constructor                          parameter read   
+input_box::save                           DB:6     
+input_box::save                                 parameter written   
+input_domain::Constructor                 DB:7     
+input_domain::Constructor                       parameter read   
+input_domain::save                        DB:8     
+input_domain::save                              parameter written   
+domain::Constructor                       DB:9     
+domain::set_boundaries                    DB:10    
+domain::set_boundaries                          n_left  =  1  
+domain::set_boundaries                          n_right =  500  
+domain::set_boundaries                          n_cells =  500  
+domain::chain_cells                       DB:11    
+domain::init_cells                        DB:12    
+domain::chain_particles                   DB:13    
+domain::init_particles                    DB:14    
+domain::check_and_save                    DB:15    
+domain::Constructor                             sizeof(struct cell)     = 176 Byte 
+domain::Constructor                             sizeof(struct particle) = 112 Byte 
+box::Constructor                          DB:16    
+box::init_restart                         DB:17    
+input_pulse::Constructor                  DB:18    
+input_pulse::Constructor                        parameter read   
+input_pulse::save                         DB:19    
+input_pulse::save                               parameter written   
+pulse::Constructor                        DB:20    
+pulse::Constructor                              pulse # 1 generated 
+pulse::Constructor                              shape       sin   
+pulse::Constructor                              amplitude     0.5  
+pulse::Constructor                              raise_time    2  periods 
+pulse::Constructor                              duration      6  periods 
+pulse::Constructor                              polarization  1  
+pulse::Constructor                              color         0 0
+pulse::Constructor                              phase         0 0
+pulse::save                               DB:21    
+input_pulse::Constructor                        parameter read   
+input_pulse::save                               parameter written   
+pulse::Constructor                              pulse # 2 is switched off 
+input_diagnostic::Constructor             DB:22    
+input_diagnostic::Constructor                   parameter read   
+input_diagnostic::save                    DB:23    
+input_diagnostic::save                          parameter written   
+input_poisson::Constructor                DB:24    
+input_poisson::Constructor                      parameter read   
+input_poisson::save                       DB:25    
+input_poisson::save                             parameter written   
+stepper_diagnostic::Constructor           DB:26    
+poisson::Constructor                      DB:27    
+poisson::Constructor                            # cells not a power of 2 -> no fft   
+input_snapshot::Constructor               DB:28    
+input_snapshot::Constructor                     parameter read   
+input_snapshot::save                      DB:29    
+input_snapshot::save                            parameter written   
+snapshot::Constructor                     DB:30    
+input_velocity::Constructor               DB:31    
+input_velocity::Constructor                     parameter read   
+input_velocity::save                      DB:32    
+input_velocity::save                            parameter written   
+velocity::Constructor                     DB:33    
+input_velocity::Constructor                     parameter read   
+input_velocity::save                            parameter written   
+input_flux::Constructor                   DB:34    
+input_flux::Constructor                         parameter read   
+input_flux::save                          DB:35    
+input_flux::save                                parameter written   
+flux::Constructor                         DB:36    
+input_reflex::Constructor                 DB:37    
+input_reflex::Constructor                       parameter read   
+input_reflex::save                        DB:38    
+input_reflex::save                              parameter written   
+reflex::Constructor                       DB:39    
+input_spacetime::Constructor              DB:40    
+input_spacetime::Constructor                    parameter read   
+input_spacetime::save                     DB:41    
+input_spacetime::save                           parameter written   
+spacetime::Constructor                    DB:42    
+input_energy::Constructor                 DB:43    
+input_energy::Constructor                       paramter read   
+input_energy::save                        DB:44    
+input_energy::save                              parameter written   
+energy::Constructor                       DB:45    
+energy::get_energies                      DB:46    
+input_trace::Constructor                  DB:47    
+input_trace::Constructor                        parameter read   
+input_trace::save                         DB:48    
+input_trace::save                               parameter written   
+trace::Constructor                        DB:49    
+input_phasespace::Constructor             DB:50    
+input_phasespace::Constructor                   parameter read   
+input_phasespace::save                    DB:51    
+input_phasespace::save                          parameter written   
+phasespace::Constructor                   DB:52    
+input_phasespace::Constructor                   parameter read   
+input_phasespace::save                          parameter written   
+diagnostic::Constructor                   DB:53    
+input_propagate::Constructor              DB:54    
+input_propagate::Constructor                    parameter read   
+input_propagate::save                     DB:55    
+input_propagate::save                           parameter written   
+stack::Constructor                        DB:56    
+propagate::Constructor                    DB:57    
+propagate::loop                           DB:58    
+input_uhr::Constructor                    DB:59    
+input_uhr::Constructor                          parameter read   
+input_uhr::save                           DB:60    
+input_uhr::save                                 parameter written   
+uhr::Constructor                          DB:61    
+uhr::reset                                DB:62    
+input_uhr::Constructor                          parameter read   
+input_uhr::save                                 parameter written   
+input_uhr::Constructor                          parameter read   
+input_uhr::save                                 parameter written   
+input_uhr::Constructor                          parameter read   
+input_uhr::save                                 parameter written   
+uhr::start                                DB:63    
+box::restart_save                         DB:64    
+box::count_restart                        DB:65    
+propagate::clear_grid                     DB:66    
+propagate::particles                      DB:67    
+propagate::accelerate_1                   DB:68    
+propagate::accelerate_2                   DB:69    
+propagate::move                           DB:70    
+propagate::has_to_change_cell             DB:71    
+propagate::deposit_current                DB:72    
+propagate::left_one                       DB:73    
+propagate::right_one                      DB:74    
+propagate::do_change_cell                 DB:75    
+propagate::mask_current                   DB:76    
+propagate::reflect_particles              DB:77    
+uhr::stop_and_add                         DB:78    
+propagate::fields                         DB:79    
+diagnostic::out                           DB:80    
+diagnostic::out                                 ---------- TIME = 0 ---------- 
+trace::store_traces                       DB:81    
+energy::average_reflex                    DB:82    
+energy::write_energies                    DB:83    
+flux::write_flux                          DB:84    
+reflex::average_reflex                    DB:85    
+reflex::write_reflex                      DB:86    
+diagnostic::count                         DB:87    
+uhr::add                                  DB:88    
+diagnostic::out                                 ---------- TIME = 1 ---------- 
+trace::store_traces                       DB:89    
+uhr::seconds_cpu                          DB:90    
+uhr::seconds_sys                          DB:91    
+uhr::sys                                  DB:92    
+main_exit                                 DB:93    
+main_exit                                       done   
