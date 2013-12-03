@@ -62,7 +62,7 @@ public:
   double kinetic, kinetic_0;
   double total, total_0;
   char *name;
-  ofstream file;
+  std::ofstream file;
 
   energy              ( parameter &p, domain* grid );
   void get_energies   ( domain* grid );

@@ -25,7 +25,10 @@
 //
 //////////////////////////////////////////////////////////////////////////////////////////
 
+#include <iostream>
 #include <parameter.h>
+
+using namespace std;
 
 parameter::parameter(int argc, char **argv)
   : rf()

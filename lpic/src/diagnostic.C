@@ -25,6 +25,8 @@
 //
 #include <diagnostic.h>
 
+using namespace std;
+
 diagnostic::diagnostic( parameter &p, domain* grid )
   : rf(),
     input(p),

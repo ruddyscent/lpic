@@ -53,7 +53,7 @@ private:
     uhr        zeit;
 
     char errname[filename_size];
-    ofstream reflex_file, reflex_file_avg, reflex_file_int;
+    std::ofstream reflex_file, reflex_file_avg, reflex_file_int;
 };
 #endif
 

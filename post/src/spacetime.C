@@ -28,6 +28,8 @@
 // changes by A.Kemp, 2002 denoted by ##
 #include <spacetime.h>
 
+using namespace std;
+
 spacetime::spacetime( parameter &p )
   : input(p),
     ft(   input.periods_x, input.cells_per_wl,     1 ),

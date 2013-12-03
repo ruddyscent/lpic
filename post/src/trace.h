@@ -23,8 +23,8 @@
 #define TRACE_H
 
 #include <common.h>
-#include <fstream.h>
-#include <iomanip.h>
+#include <fstream>
+#include <iomanip>
 #include <string.h>
 #include <parameter.h>
 #include <utilities.h>
@@ -88,7 +88,7 @@ class trace {
 
   double **power_spectrum;
   char *power_name, *trace_name;
-  ofstream powerfile, tracefile;
+  std::ofstream powerfile, tracefile;
   FILE* read_file;
   char *read_name;
   char *path;

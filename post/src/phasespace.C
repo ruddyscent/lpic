@@ -28,6 +28,8 @@
 // changes by A.Kemp, 2002 denoted by ##
 #include <phasespace.h>
 
+using namespace std;
+
 phasespace::phasespace( parameter &p )
   : input(p)
 {

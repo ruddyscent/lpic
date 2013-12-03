@@ -71,7 +71,7 @@ public:
 
   double *ex, *rhok, *phik;
   char *name;
-  ofstream file;
+  std::ofstream file;
 
        poisson ( parameter &p, domain *grid );
   void solve   ( domain* grid );

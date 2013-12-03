@@ -23,10 +23,11 @@
 #define ERROR_H
 
 #include <common.h>
-#include <fstream.h>
+#include <iostream>
+#include <fstream>
 #include <stdio.h>
 #include <string.h>
-#include <iomanip.h>
+#include <iomanip>
 #include <stdlib.h>
 
 class error_handler {
@@ -37,7 +38,7 @@ class error_handler {
     static int object_number;
     const char *my_name;
     char       *errname;
-    ofstream   errfile;
+    std::ofstream   errfile;
     static int tab;
 public:
     error_handler(const char *, char *error_file_name);

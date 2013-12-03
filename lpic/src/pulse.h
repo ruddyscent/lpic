@@ -33,8 +33,8 @@
 #include <math.h>
 #include <error.h>
 #include <parameter.h>
-#include <fstream.h>
-#include <iomanip.h>
+#include <fstream>
+#include <iomanip>
 #include <readfile.h>
 
 //////////////////////////////////////////////////////////////////////////////////////////

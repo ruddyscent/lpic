@@ -21,6 +21,9 @@
 */
 
 #include <domain.h>
+
+using namespace std;
+
 // exponential energy distribution introduced by A.Kemp, 04/02
 domain::domain( parameter &p )
   : input(p)

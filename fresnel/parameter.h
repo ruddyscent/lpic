@@ -31,8 +31,8 @@
 
 #include <common.h>
 #include <error.h>
-#include <fstream.h>
-#include <iomanip.h>
+#include <fstream>
+#include <iomanip>
 #include <string.h>
 #include <utilities.h>
 #include <math.h>

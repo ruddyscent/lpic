@@ -29,8 +29,8 @@
 #define PARAMETER_H
 
 #include <common.h>
-#include <fstream.h>
-#include <iomanip.h>
+#include <fstream>
+#include <iomanip>
 #include <string.h>
 #include <utilities.h>
 #include <error.h>

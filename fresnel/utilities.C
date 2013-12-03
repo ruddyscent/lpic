@@ -19,11 +19,13 @@
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+#include <iostream>
 #include <utilities.h>
 
 #define NR_END 1
 #define FREE_ARG char*
 
+using namespace std;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 

@@ -25,8 +25,8 @@
 #include <time.h>
 #include <math.h>
 #include <stdio.h>
-#include <fstream.h>
-#include <iomanip.h>
+#include <fstream>
+#include <iomanip>
 #include <error.h>
 #include <parameter.h>
 

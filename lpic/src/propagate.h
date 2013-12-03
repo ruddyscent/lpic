@@ -72,7 +72,7 @@ private:
     int        domain_number;                // domain number
     int        n_domains;                    // # of domains
 
-    ofstream grid_file;
+    std::ofstream grid_file;
 
     char errname[filename_size];
 

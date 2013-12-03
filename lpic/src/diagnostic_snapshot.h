@@ -62,7 +62,7 @@ public:
   diagnostic_stepper stepper;
 
   char     *name;
-  ofstream file;
+  std::ofstream file;
 
   snapshot        ( parameter &p );
   void write_snap ( double time, domain* grid, parameter &p );

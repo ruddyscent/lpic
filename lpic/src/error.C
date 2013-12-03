@@ -28,6 +28,8 @@
 
 #include <error.h>
 
+using namespace std;
+
 int error_handler::error_number   = 0;
 int error_handler::message_number = 0;
 int error_handler::debug_number   = 0;

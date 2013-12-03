@@ -23,7 +23,7 @@
 #define MAIN_H
 
 #include <common.h>
-#include <iostream.h>
+#include <iostream>
 #include <error.h>
 #include <parameter.h>
 #include <box.h>

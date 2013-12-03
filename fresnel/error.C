@@ -19,7 +19,10 @@
    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 */
 
+#include <iostream>
 #include <error.h>
+
+using namespace std;
 
 int error_handler::error_number   = 0;
 int error_handler::message_number = 0;

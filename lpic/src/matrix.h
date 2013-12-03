@@ -26,9 +26,9 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include <fstream.h>
+#include <fstream>
 #include <string.h>
-#include <iomanip.h>
+#include <iomanip>
 double** dmatrix( long nrl, long nrh, long ncl, long nch );
 void     delete_dmatrix( double **m, long nrl, long nrh, long ncl, long nch );
 float**  matrix( long nrl, long nrh, long ncl, long nch );

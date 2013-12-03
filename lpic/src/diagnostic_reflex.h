@@ -60,7 +60,7 @@ public:
 
   double   *buf;
   char     *name;
-  ofstream file;
+  std::ofstream file;
 
   reflex              ( parameter &p );
   void average_reflex ( domain* grid );

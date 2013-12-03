@@ -25,7 +25,7 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include <fstream.h>
+#include <fstream>
 #include <string.h>
 
 float**          fmatrix( long nrl, long nrh, long ncl, long nch );
@@ -38,7 +38,7 @@ int**            imatrix( long nrl, long nrh, long ncl, long nch );
 void      delete_imatrix( int **m, long nrl, long nrh, long ncl, long nch );
 
 class Trash {
-  friend ifstream& operator>> (ifstream&, Trash&);
+  friend std::ifstream& operator>> (std::ifstream&, Trash&);
 private:
   char string[1];
 };

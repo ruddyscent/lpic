@@ -69,7 +69,7 @@ public:
 
   velocity ( parameter &p,
 	     int species_input, char *species_name_input );
-  void velocity::write_velocity( double time, parameter &p, domain *grid );
+  void write_velocity( double time, parameter &p, domain *grid );
 };
 
 

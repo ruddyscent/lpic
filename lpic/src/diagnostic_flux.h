@@ -59,7 +59,7 @@ public:
   diagnostic_stepper stepper;
 
   char     *name;
-  ofstream file;
+  std::ofstream file;
 
   flux  ( parameter &p );
   void write_flux ( double time, domain* grid );

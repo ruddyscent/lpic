@@ -23,9 +23,10 @@
 #define DOMAIN_H
 
 #include <common.h>
-#include <fstream.h>
+#include <iostream>
+#include <fstream>
 #include <stdio.h>
-#include <iomanip.h>
+#include <iomanip>
 #include <math.h>
 #include <error.h>
 #include <cell.h>

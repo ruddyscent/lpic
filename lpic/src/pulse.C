@@ -21,6 +21,8 @@
 
 #include <pulse.h>
 
+using namespace std;
+
 int pulse::pulse_number = 0;
 
 pulse::pulse( parameter &p, char *side )

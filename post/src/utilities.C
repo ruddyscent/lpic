@@ -30,7 +30,9 @@
 
 // iostream.h added by R.L. on 06.08.05, needed by cout and endl
 // to compile with gcc 4 on Mac OS X 10.4
-#include <iostream.h>
+#include <iostream>
+
+using namespace std;
 
 ///////////////////////////////////////////////////////////////////////
 void error(char* s1, char* s2, char *s3, char *s4)

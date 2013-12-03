@@ -28,6 +28,7 @@
 // changes by A.Kemp, 2002 denoted by ##
 #include <trace.h>
 
+using namespace std;
 
 trace::trace( parameter &p )
         : input(p),

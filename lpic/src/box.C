@@ -21,6 +21,8 @@
 
 #include <box.h>
 
+using namespace std;
+
 box::box( parameter &p )
 #ifdef LPIC_PARALLEL
   : input(p),

@@ -22,7 +22,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <iostream.h>
+#include <iostream>
 #include <common.h>
 #include <error.h>
 #include <parameter.h>
